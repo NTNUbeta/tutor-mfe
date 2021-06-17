@@ -20,7 +20,7 @@ RUN mkdir -p /openedx/env
 {% for app in iter_values_named(suffix="MFE_APP") %}
 ######## {{ app["name"] }} (dev)
 FROM base AS {{ app["name"] }}-dev
-RUN git clone {{ app["repository"] }} --branch {{ app.get("version", MFE_COMMON_VERSION) }} --depth 1 .
+RUN git clone {{ app["repository"] }} --depth 1 .
 ARG NPM_REGISTRY=https://registry.npmjs.org/
 RUN npm install --verbose --registry=$NPM_REGISTRY
 ENV PUBLIC_PATH='/{{ app["name"] }}/'

@@ -8,6 +8,9 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 templates = os.path.join(HERE, "templates")
 
 config = {
+    "add":{
+        "OAUTH2_SECRET": "{{ 24|random_string }}",
+    },
     "defaults": {
         "VERSION": __version__,
         "DOCKER_IMAGE": "{{ DOCKER_REGISTRY }}overhangio/openedx-mfe:{{ MFE_VERSION }}",
@@ -34,6 +37,11 @@ config = {
             "repository": "https://github.com/edx/frontend-app-profile",
             "port": 1995,
         },
+        "LOGISTRATION_MFE_APP": {
+            "name": "logistration",
+            "repository": "https://github.com/edx/frontend-app-authn.git",
+            "port": 1999,
+        }
     },
 }
 
